@@ -2,10 +2,10 @@
 
 
 #initiaize out IP range
-hosts=$(echo 178.98.45.{102..149});
-admin_passwd="roc95hov"
-server_ip="178.98.45.7"
-filename="lights-original"
+hosts=$(echo 0.0.0.0);
+admin_passwd=""
+server_ip=""
+filename=""
 
 #functions
 
