@@ -1,0 +1,30 @@
+#!/usr/bin/expect -f
+
+set user_host [lindex $argv 0]
+set passwd [lindex $argv 1]
+set admin_passwd [lindex $argv 2]
+set new_admin_passwd [lindex $argv 3]
+
+spawn ssh $user_host
+expect "$user_host's password: "
+send "$passwd\r"
+sleep .2
+
+send -- "\x1B\[B"
+send -- "\x1B\[B"
+send -- "\x1B\[B"
+send -- "\r"
+sleep .1
+send -- "$admin_passwd\r"
+sleep .1
+send -- "$new_admin_passwd\r"
+sleep .1
+send -- "$new_admin_passwd\r"
+sleep .1
+
+send -- "\x1B\[B"
+send -- "\x1B\[B"
+send -- "\x1B\[B"
+send -- "\x1B\[B"
+send -- "\r"
+sleep .2

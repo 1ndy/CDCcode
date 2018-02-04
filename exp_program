@@ -1,0 +1,29 @@
+#!/usr/bin/expect -f
+
+set user_host [lindex $argv 0]
+set passwd [lindex $argv 1]
+set admin_passwd [lindex $argv 2]
+set server_ip [lindex $argv 3]
+set filename [lindex $argv 4]
+
+spawn ssh $user_host
+expect "$user_host's password: "
+send "$passwd\r"
+sleep .2
+expect "*"
+send -- "\x1B\[B"
+sleep .1
+send -- "\r"
+sleep .1
+send -- "$admin_passwd"
+sleep .1
+send -- "\r"
+sleep .1
+send -- "\r"
+sleep .1
+send -- "$server_ip\r"
+sleep .1
+send -- "$filename"
+sleep .5
+send "\003"
+sleep .2

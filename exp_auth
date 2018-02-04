@@ -1,0 +1,10 @@
+#!/usr/bin/expect -f
+
+set passwd [lindex $argv 0]
+sleep 1
+expect *
+send -- "\r"
+sleep 1
+send "$passwd\r"
+
+interact
